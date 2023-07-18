@@ -1,0 +1,37 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+      <div class="container">
+                <!-- Start User Event Area -->
+                <div class="login-wrapper">
+                    <div class="section-content">
+                        <h1 class="title">تماس با ما</h1>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+                    </div>
+                    <form action="#" class="default-form-wrapper" method="POST">
+                        {% csrf_token %}
+                        <ul class="default-form-list">
+                            <li class="single-form-item">
+                                <label for="name" class="visually-hidden">نام</label>
+                                <input  name= 'username' type="text" id="name" placeholder="نام کاربری">
+                                <span class="icon"><i class="icon icon-carce-user"></i></span>
+                            </li>
+                            <li class="single-form-item">
+                                <label for="email" class="visually-hidden">ایمیل</label>
+                                <input name = 'email' type="email" id="email" placeholder="ایمیل">
+                                <span class="icon"><i class="icon icon-carce-mail"></i></span>
+                            </li>
+                            <li class="single-form-item">
+                                <label for="password" class="visually-hidden">رمز ورود</label>
+                                <input name = 'password' type="password" id="password" placeholder="رمز ورود">
+                                <span class="icon"><i class="icon icon-carce-eye"></i></span>
+                            </li>
+
+                        </ul>
+                        <button class="btn btn-payment">ارسال</button>
+                    </form>
+                </div>
+
+            </div>
+{% endblock %}

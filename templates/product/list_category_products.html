@@ -1,0 +1,41 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- ...:::Start Hero Slider Section:::... -->
+    <div class="hero-section section-gap-top-25">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Start Hero Area -->
+                    <div class="hero-area hero-area--style-2 hero-slider-active">
+                        <!-- Slider main container -->
+                        <div class="swiper">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <div class="hero-singel-slide ">
+                                        <div class="hero-bg">
+                                            <img width="388" height="130" class="img-full"
+                                                 src="{% static 'assets/images/images (2).jfif' %}" alt="">
+                                        </div>
+                                        <div class="inner-wrapper">
+                                            <div class="content">
+                                                <h2 class="title">انواع پوشاک</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- End Hero Area -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ...:::End Hero Slider Section:::... -->
+
+{% endblock %}

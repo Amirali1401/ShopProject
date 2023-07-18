@@ -1,0 +1,66 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<body dir="rtl">
+
+    <main class="main-wrapper overflow-x-hidden">
+        <!-- ...:::Start Contact Section:::... -->
+        <div class="contact-section section-gap-top-30">
+            <div class="container">
+                <div class="login-wrapper">
+                    <form action="#" class="default-form-wrapper profile-wrapper" method="POST">
+                        {% csrf_token %}
+                        {% if form.errors %}
+                            {{ form.errors }}
+                        {% endif %}
+                        <ul class="default-form-list">
+                            <li class="single-form-item">
+                                <label for="name" class="visually-hidden">نام و نام خانوادگی</label>
+                                <input name = 'username' type="text" id="name" placeholder="نام کامل">
+                                <span class="icon"><i class="icon icon-carce-user"></i></span>
+                            </li>
+                            <li class="single-form-item">
+                                <label for="email" class="visually-hidden">ایمیل</label>
+                                <input name = 'email' type="email" id="email" placeholder="ایمیل">
+                                <span class="icon"><i class="icon icon icon-carce-mail"></i></span>
+                            </li>
+                            <li class="single-form-item">
+                                <label for="password" class="visually-hidden">رمز عبور</label>
+                                <input name = 'password' type="text" id="password" placeholder="رمز عبور">
+                                <span class="icon"><i class="icon icon-carce-phone"></i></span>
+                            </li>
+
+                        </ul>
+                        <br>
+                          <ul class="default-form-list">
+                              <h3>تغییر رمز عبور</h3>
+                              <li class="single-form-item">
+                                  <label for="new_password1" class="visually-hidden">رمز عبور</label>
+                                  <input name='new_password1' type="password" id="new_password1" placeholder="رمز عبور جدید">
+                                  <span class="icon"><i class="icon icon-carce-phone"></i></span>
+                              </li>
+
+                              <li class="single-form-item">
+                                  <label for="new_password2" class="visually-hidden">رمز عبور</label>
+                                  <input name='new_password2' type="password" id="new_password2" placeholder=" تکرار رمز عبور جدید">
+                                  <span class="icon"><i class="icon icon-carce-phone"></i></span>
+                              </li>
+                        <button type="submit">ذخیره اطلاعات</button>
+                          </ul>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- ...:::End Contact Section:::... -->
+
+    </main>
+
+
+</body>
+
+</html>
+{% endblock %}

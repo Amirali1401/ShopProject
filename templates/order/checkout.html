@@ -1,0 +1,34 @@
+{% extends '_base.html' %}
+{% load static %}
+
+<body dir="rtl">
+  {% block content %}
+    <main class="main-wrapper">
+                <!-- ...:::Start Billing Info Section:::... -->
+        <div class="billing-info section-gap-top-25">
+            <div class="container px-0">
+                <div class="billing-information-card">
+
+                    <span class="billing-information-title">اطلاعات صورتحساب</span>
+                    <ul class="billing-information-lists">
+                        <li class="billing-information-list"> <span> نام</span>
+                            <span>{{ order.first_name }}</span>
+                        </li>
+                        <li class="billing-information-list"> <span> ایمیل </span>
+                            <span>{{ order.email }}</span>
+                        </li>
+                        <li class="billing-information-list"> <span> تلفن </span>
+                            <span>{{ order.phone_number }}</span>
+                        </li>
+                        <li class="billing-information-list"> <span> آدرس تحویل </span> <span>{{ order.address }}</span> </li>
+                    </ul>
+
+
+                </div>
+            </div>
+            <a href="{% url 'payment_process' %}"><button type="submit" class = 'btn-payment'>پرداخت نهایی</button></a>
+        </div>
+        <!-- ...:::End Billing Info Section:::... -->
+    </main>
+{% endblock %}
+</body>

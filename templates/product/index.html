@@ -1,0 +1,77 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<body dir="rtl">
+
+    <main class="main-wrapper">
+        <!-- ...:::Start Hero Slider Section:::... -->
+        <div class="hero-section section-gap-top-25">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                     <div class="catagories-nav-2 section-gap-top-25">
+                    <!-- Slider main container -->
+                    <div class="swiper-slide-active">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            {% for shop in shops %}
+                            <div class="swiper-slide">
+                                <a href="{% url 'product:shop_view' shop.id %}" class="btn">{{ shop.shop_name }}</a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ...:::End Hero Slider Section:::... -->
+
+        <!-- ...:::Start Catagories - 3 Section:::... -->
+        <div class="catagories-section section-gap-top-50">
+            <div class="container">
+                <div class="catagories-area">
+                    <div class="catagories-nav-3">
+                        <a href="{% url 'product:shop_view' 5 %}" class="btn"><img width="33" height="21" src="{% static 'assets/images/shop2.jfif' %}" alt=""></a>
+                        <a href="{% url 'product:shop_view' 6 %}" class="btn"><img width="32" height="20" src="{% static 'assets/images/welcome.png' %}" alt=""></a>
+                    </div>
+                </div>
+        <!-- ...:::Start Catagories - 3 Section:::... -->
+               <div class="catagories-wrapper section-gap-top-25">
+                    <div class="catagories-wrapper-content">
+                        <!-- Start Product Single Item -->
+                        {% for product in products %}
+                        <div class="single-product-item product-item--style-3">
+                            <div class="image">
+                                <a href="{% url 'product:detail_products' product.id %}">
+                                    <img width="140" height="110" class="img-fluid" src="{{ product.covers.url }}" alt="image">
+                                </a>
+                                <a href="{% url 'product:add_to_wishlist' product.id %}" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
+                            </div>
+                            <div class="content">
+                                <div class="content--left">
+                                    <a href="{% url 'product:detail_products' product.id %}" class="title">{{ product.name }}</a>
+                                    <span class="price">{{ product.selling_price }}</span>
+                                </div>
+                                <div class="content--right">
+                                    <span class="review-star-text">4.5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ENd Product Single Item -->
+
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+{% endblock %}

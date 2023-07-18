@@ -1,0 +1,38 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+   <body dir="rtl">
+
+    <main class="main-wrapper">
+
+        <!-- ...:::Start Login Section:::... -->
+        <div class="intro-section">
+            <div class="intro-wrapper">
+                <div class="logo">
+                    <a href="{% url 'product:index' %}" class="image">
+                        <img class="img-fluid" width="147" height="26" src="{% static 'assets/images/logo.png' %}" alt="">
+                    </a>
+                    <span class="">کارسی اپلیکیشن موبایل فروشگاهی</span>
+                </div>
+
+                <div class="intro-bg">
+                    <img class="img-fluid" width="308" height="257" src="{% static 'assets/images/intro-bg.png' %}" alt="">
+                </div>
+                <p class="intro-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است!</p>
+                <a href="{% url 'login' %}" class="btn--center btn--round btn--size-58-58 btn--color-white btn--radical-red progress-btn progress-btn--25">
+                    <i class="icon icon-carce-ios-arrow-forward"></i></a>
+                <a href="{% url 'product:index' %}" class="skip-btn">پرش</a>
+            </div>
+            <!-- <div class="page-progress-wrapper">
+
+            </div> -->
+        </div>
+        <!-- ...:::End User Event Section:::... -->
+
+    </main>
+
+
+</body>
+
+{% endblock %}

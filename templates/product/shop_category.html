@@ -1,0 +1,401 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+
+        <!-- ...:::Start Search & Filter Section:::... -->
+        <div class="search-n-filter-section section-gap-top-25">
+            <div class="container">
+                <!-- Start Search & Filter Area -->
+                <div class="search-n-filter-area">
+                    <div class="search-box">
+                        <a href="{% url 'product:index' %}" aria-label="Filter Icon" class="filter_btn btn--radius btn--bg-white btn--box-shadow btn--size-40-40 filter-back-btn">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="5.973" height="10.449" viewBox="0 0 5.973 10.449">
+                                <path id="Icon_ionic-ios-arrow-back" data-name="Icon ionic-ios-arrow-back" d="M13.051,11.417,17,7.466a.747.747,0,0,0-1.058-1.054l-4.479,4.476a.745.745,0,0,0-.022,1.03l4.5,4.507A.747.747,0,1,0,17,15.37Z" transform="translate(-11.251 -6.194)"></path>
+                            </svg>
+                        </a>
+                        <div class="searchable select">
+                            <form action="{% url 'product:search_books' %}" method="GET">
+                                {% csrf_token %}
+                            <label>
+                                <input name ='q' type="text" placeholder="جستجو..." onkeyup="filterFunction(this,event)">
+                            </label>
+                            <ul>
+                                <li>تهران</li>
+                                <li>مشهد</li>
+                                <li>اصفهان</li>
+                                <li>شیراز</li>
+                                <li>کرمانشاه</li>
+                            </ul>
+                            <button class="btn search__btn" aria-label="Search Icon" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12.003" viewBox="0 0 12 12.003">
+                                    <path id="Icon_ionic-ios-search" data-name="Icon ionic-ios-search" d="M13.859,13.131,10.522,9.762a4.756,4.756,0,1,0-.722.731l3.316,3.347a.514.514,0,0,0,.725.019A.517.517,0,0,0,13.859,13.131Zm-7.075-2.6a3.756,3.756,0,1,1,2.656-1.1A3.732,3.732,0,0,1,6.784,10.534Z" transform="translate(-2 -1.997)" fill="#171717"></path>
+                                </svg>
+                            </button>
+
+                            <button class="btn submit__btn" aria-label="Search Icon" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" class="rotate_y_180" height="12" viewBox="0 0 18 12">
+                                    <path id="Icon_ionic-ios-arrow-round-forward" data-name="Icon ionic-ios-arrow-round-forward" d="M19.354,11.481a.816.816,0,0,0-.006,1.15l3.8,3.806H8.682a.812.812,0,0,0,0,1.625H23.143l-3.8,3.806a.822.822,0,0,0,.006,1.15.81.81,0,0,0,1.144-.006l5.152-5.187h0a.912.912,0,0,0,.169-.256.775.775,0,0,0,.063-.312.814.814,0,0,0-.231-.569L20.492,11.5A.8.8,0,0,0,19.354,11.481Z" transform="translate(-7.875 -11.252)" fill="#aaa"></path>
+                                </svg>
+                            </button>
+
+                            <button class="btn close__btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                                    <path id="Icon_metro-cancel" data-name="Icon metro-cancel" d="M6.857.643a6,6,0,1,0,6,6,6,6,0,0,0-6-6Zm0,10.875a4.875,4.875,0,1,1,4.875-4.875A4.875,4.875,0,0,1,6.857,11.518ZM8.732,3.643,6.857,5.518,4.982,3.643,3.857,4.768,5.732,6.643,3.857,8.518,4.982,9.643,6.857,7.768,8.732,9.643,9.857,8.518,7.982,6.643,9.857,4.768Z" transform="translate(-0.857 -0.643)" fill="#aaa"></path>
+                                </svg>
+                            </button>
+                            </form>
+                        </div>
+                        <button id="filter-trigger" aria-label="Filter Icon" class="filter_btn btn--radius btn--radical-red btn--color-white btn--box-shadow btn--size-40-40 btn--center btn--font-size-22"><i
+								class="icon icon-carce-filter"></i></button>
+                    </div>
+                </div>
+                <!-- End Search & Filter Area -->
+
+                <div class="shop-filter" id="shop-filter-menu">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="shop-filter-block mt-0">
+                                    <h4 class="shop-filter-block__title">قیمت</h4>
+                                    <div class="shop-filter-block__content">
+                                        <div class="widget-price-range">
+                                            <input type="text" id="price-range-slider">
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="product-variable-lists">
+                                    <li class="list-item">
+                                        <div class="left">سایز</div>
+                                        <div class="right">
+                                            <ul class="size-chart inner-child-item">
+                                                <li>
+                                                    <label for="samll">
+                                                        <input type="radio" name="size" id="samll" checked="">
+                                                        <span class="size-text">S</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label for="medium">
+                                                        <input type="radio" name="size" id="medium">
+                                                        <span class="size-text">M</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label for="large">
+                                                        <input type="radio" name="size" id="large">
+                                                        <span class="size-text">L</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label for="xlarge">
+                                                        <input type="radio" name="size" id="xlarge">
+                                                        <span class="size-text">XL</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label for="xxlarge">
+                                                        <input type="radio" name="size" id="xxlarge">
+                                                        <span class="size-text">XXL</span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="list-item">
+                                        <div class="left">رنگ</div>
+                                        <div class="right">
+                                            <ul class="color-chart inner-child-item">
+                                                <li>
+                                                    <label for="blue">
+                                                        <input type="radio" name="color" id="blue">
+                                                        <span class="color-box color-box--blue"></span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label for="orange">
+                                                        <input type="radio" name="color" id="orange" checked="">
+                                                        <span class="color-box color-box--orange"></span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label for="violet">
+                                                        <input type="radio" name="color" id="violet">
+                                                        <span class="color-box color-box--violet"></span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label for="pink">
+                                                        <input type="radio" name="color" id="pink">
+                                                        <span class="color-box color-box--pink"></span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                                <div class="shop-filter-block">
+                                    <h4 class="shop-filter-block__title">برند</h4>
+                                    <div class="shop-filter-block__content">
+                                        <ul class="shop-filter-block__brand">
+                                            <li><button>سامسونگ</button></li>
+                                            <li><button class="active">لنوو</button></li>
+                                            <li><button>نایکی</button></li>
+                                            <li><button>آدیداس</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="shop-filter-block">
+                                    <button class="apply-btn">اعمال</button>
+                                    <button class="cancel-btn">انصراف</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ...:::End Search & Filter Section:::... -->
+
+        <!-- ...:::Start Catagories - 1 Section:::... -->
+        <div class="catagories-section section-gap-top-50">
+            <div class="container">
+                <div class="catagories-area">
+                    <div class="catagories-nav-1 catagories-nav-modyfied">
+                        <!-- Slider main container -->
+                        <div class="swiper">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <a href="single-product.html" class="btn">همه</a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="single-product.html" class="btn">
+                                        <img width="24" height="13" src="assets/images/catagories/shoe.png" alt="image">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="single-product.html" class="btn">
+                                        <img width="22" height="20" src="assets/images/catagories/casual-t-shirt.png" alt="image">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="single-product.html" class="btn">
+                                        <img width="16" height="20" src="assets/images/catagories/strapless.png" alt="image">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="single-product.html" class="btn">
+                                        <img width="9" height="20" src="assets/images/catagories/trousers.png" alt="image">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="single-product.html" class="btn">
+                                        <img width="17" height="20" src="assets/images/catagories/bag-pack.png" alt="image">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="single-product.html" class="btn">
+                                        <img width="22" height="20" src="assets/images/catagories/casual-t-shirt.png" alt="image">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="single-product.html" class="btn">
+                                        <img width="24" height="13" src="assets/images/catagories/shoe.png" alt="image">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title-content">
+                    <h2 class="title">همه محصولات</h2>
+                    <button aria-label="Short by" class="short-btn">مرتب سازی براساس <span class="icon"><i
+								class="icon icon-carce-arrow_drop_down_circle"></i></span></button>
+                </div>
+                <div class="product-wrapper">
+                    <div class="product-wrapper-content--4">
+                        <!-- Start Product Single Item -->
+                        <div id="single-product-item" class="single-product-item product-item--style-4">
+                            <a aria-label="Product Image" href="single-product.html" class="image">
+                                <img width="90" height="90" class="img-fluid" src="assets/images/product/small/product-1-small-1.png" alt="image">
+                            </a>
+                            <div class="content">
+                                <div class="content--left">
+                                    <a href="single-product.html" class="title">صندلی طنین</a>
+                                    <ul class="review-star">
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                    </ul>
+                                    <span class="price">500000</span>
+                                </div>
+                                <div class="content--right">
+                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i
+											class="icon icon-carce-heart"></i></a>
+                                </div>
+                            </div>
+                            <a href="cart.html" aria-label="Cart" class="cart-link"><i
+									class="icon icon-carce-cart"></i></a>
+                        </div>
+                        <!-- ENd Product Single Item -->
+                        <!-- Start Product Single Item -->
+                        <div class="single-product-item product-item--style-4">
+                            <a aria-label="Product Image" href="single-product.html" class="image">
+                                <img width="90" height="90" class="img-fluid" src="assets/images/product/small/product-1-small-2.png" alt="image">
+                            </a>
+                            <div class="content">
+                                <div class="content--left">
+                                    <a href="single-product.html" class="title">مبل هاتیل</a>
+                                    <ul class="review-star">
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                    </ul>
+                                    <span class="price">500000</span>
+                                </div>
+                                <div class="content--right">
+                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i
+											class="icon icon-carce-heart"></i></a>
+                                </div>
+                            </div>
+                            <a href="cart.html" aria-label="Cart" class="cart-link"><i
+									class="icon icon-carce-cart"></i></a>
+                        </div>
+                        <!-- ENd Product Single Item -->
+                        <!-- Start Product Single Item -->
+                        <div class="single-product-item product-item--style-4">
+                            <a aria-label="Product Image" href="single-product.html" class="image">
+                                <img width="90" height="90" class="img-fluid" src="assets/images/product/small/product-1-small-3.png" alt="image">
+                            </a>
+                            <div class="content">
+                                <div class="content--left">
+                                    <a href="single-product.html" class="title">مبلمان دیمن</a>
+                                    <ul class="review-star">
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                    </ul>
+                                    <span class="price">500000</span>
+                                </div>
+                                <div class="content--right">
+                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i
+											class="icon icon-carce-heart"></i></a>
+                                </div>
+                            </div>
+                            <a href="cart.html" aria-label="Cart" class="cart-link"><i
+									class="icon icon-carce-cart"></i></a>
+                        </div>
+                        <!-- ENd Product Single Item -->
+                        <!-- Start Product Single Item -->
+                        <div class="single-product-item product-item--style-4">
+                            <a aria-label="Product Image" href="single-product.html" class="image">
+                                <img width="90" height="90" class="img-fluid" src="assets/images/product/small/product-1-small-4.png" alt="image">
+                            </a>
+                            <div class="content">
+                                <div class="content--left">
+                                    <a href="single-product.html" class="title">اتاق مطالعه</a>
+                                    <ul class="review-star">
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                    </ul>
+                                    <span class="price">500000</span>
+                                </div>
+                                <div class="content--right">
+                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i
+											class="icon icon-carce-heart"></i></a>
+                                </div>
+                            </div>
+                            <a href="cart.html" aria-label="Cart" class="cart-link"><i
+									class="icon icon-carce-cart"></i></a>
+                        </div>
+                        <!-- ENd Product Single Item -->
+                        <!-- Start Product Single Item -->
+                        <div class="single-product-item product-item--style-4">
+                            <a aria-label="Product Image" href="single-product.html" class="image">
+                                <img width="90" height="90" class="img-fluid" src="assets/images/product/small/product-1-small-1.png" alt="image">
+                            </a>
+                            <div class="content">
+                                <div class="content--left">
+                                    <a href="single-product.html" class="title">صندلی طنین</a>
+                                    <ul class="review-star">
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                    </ul>
+                                    <span class="price">500000</span>
+                                </div>
+                                <div class="content--right">
+                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i
+											class="icon icon-carce-heart"></i></a>
+                                </div>
+                            </div>
+                            <a href="cart.html" aria-label="Cart" class="cart-link"><i
+									class="icon icon-carce-cart"></i></a>
+                        </div>
+                        <!-- ENd Product Single Item -->
+                    </div>
+                    <button class="load-more-btn">ادامه بارگزاری</button>
+                </div>
+            </div>
+        </div>
+        <!-- ...:::Start Catagories - 1 Section:::... -->
+
+        <div class="short-section">
+            <div class="container">
+                <div class="short-wrapper">
+                    <span class="title">مرتب سازی بر اساس</span>
+
+                    <ul class="short-select-list">
+                        <li class="list-item">
+                            <label for="sort-1">
+                                جدیدترین
+                                <input type="radio" name="sort-item" id="sort-1" checked>
+                                <span class="sort-radio-btn"></span>
+                            </label>
+                        </li>
+                        <li class="list-item">
+                            <label for="sort-2">
+                                گرانترین
+                                <input type="radio" name="sort-item" id="sort-2">
+                                <span class="sort-radio-btn"></span>
+                            </label>
+                        </li>
+                        <li class="list-item">
+                            <label for="sort-3">
+                                ارزانترین
+                                <input type="radio" name="sort-item" id="sort-3">
+                                <span class="sort-radio-btn"></span>
+                            </label>
+                        </li>
+                        <li class="list-item">
+                            <label for="sort-4">
+                                بالاترین امتیاز
+                                <input type="radio" name="sort-item" id="sort-4">
+                                <span class="sort-radio-btn"></span>
+                            </label>
+                        </li>
+                    </ul>
+
+                    <div class="short-btn-group">
+                        <button class="btn btn-cancel">انصراف</button>
+                        <button class="btn btn-apply">اعمال</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

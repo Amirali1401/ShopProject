@@ -1,0 +1,58 @@
+{% extends '_base.html' %}
+
+<body dir="rtl">
+{% block content %}
+    <main class="main-wrapper">
+
+        <!-- ...:::Start Billing Info Section:::... -->
+        <div class="container px-0">
+            <!-- Start User Event Area -->
+            <div class="login-wrapper">
+                          <span class="billing-information-title">اطلاعات صورتحساب</span>
+                    <form action="#" method="POST" class="default-form-wrapper">
+                        {% csrf_token %}
+                        <ul class="default-form-list">
+                            <li class="single-form-item">
+                                <label for="first_name" class="visually-hidden">نام کوچک</label>
+                                <input type="text" id="first_name" name='first_name'>
+                                <span class="icon"><i class="icon icon-carce-user"></i></span>
+                            </li>
+                            <li class="single-form-item">
+                                <label for="last_name" class="visually-hidden">نام خانوادگی</label>
+                                <input type="text" id="last_name" name='last_name'>
+                                <span class="icon"><i class="icon icon-carce-user"></i></span>
+                            </li>
+                            <li class="single-form-item">
+                                <label for="email" class="visually-hidden">ایمیل</label>
+                                <input type="email" id="email" name='email'>
+                                <span class="icon"><i class="icon icon-carce-mail"></i></span>
+                            </li>
+                            <li class="single-form-item">
+                                <label for="address" class="visually-hidden">ادرس</label>
+                                <input type="text" id="address" name='address'>
+                                <span class="icon"><i class="icon icon-carce-profile"></i></span>
+                            </li>
+
+                            <li class="single-form-item">
+                                <label for="phone_number" class="visually-hidden">تلفن همراه</label>
+                                <input type="text" id="phone_number" name='phone_number'>
+                                <span class="icon"><i class="icon icon-carce-phone"></i></span>
+                            </li>
+
+                        </ul>
+                        <br>
+                        <div class="payment-card">
+                            <span class="total-price"><span class="counter"> قیمت کل :{{ cart.calculate_pure_price }}</span></span>
+                            <button type="submit" class = 'btn-payment'>ثبت سفارش</button>
+                        </div>
+                    </form>
+
+            </div>
+        </div>
+        <!-- ...:::End Billing Info Section:::... -->
+
+    </main>
+    </body>
+
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends '_base.html' %}
+{##}
+{##}
+{#<body dir="rtl">#}
+{#{% block content %}#}
+{#    <main class="main-wrapper">#}
+{#        <!-- ...:::Start Login Section:::... -->#}
+{#        <div class="login-section">#}
+{#            <div class="container">#}
+{#                <!-- Start User Event Area -->#}
+{#                <div class="login-wrapper">#}
+{#                    <div class="section-content">#}
+{#                        <h1 class="title">خوش آمدید</h1>#}
+{#                        <p>برای ادامه وارد حساب کاربری خود شوید.</p>#}
+{#                    </div>#}
+{#                    <form action="#" class="default-form-wrapper" method="POST">#}
+{#                        {% csrf_token %}#}
+{#                        <ul class="default-form-list">#}
+{#                            <li class="single-form-item">#}
+{#                                <label for="name" class="visually-hidden">نام کاربری</label>#}
+{#                                <input type="text" name='username' id="name" placeholder="نام کاربری">#}
+{#                                <span class="icon"><i class="icon icon-carce-user"></i></span>#}
+{#                            </li>#}
+{#                            <li class="single-form-item">#}
+{#                                <label for="password" class="visually-hidden">رمز ورود</label>#}
+{#                                <input type="password" name='password' id="password" placeholder="رمز ورود">#}
+{#                                <span class="icon active"><i class="icon icon-carce-eye"></i></span>#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                        <br>#}
+{##}
+{#                        <button type="submit" class="btn btn-payment">ورود به برنامه</button>#}
+{#                        <span class="devide-text">یا</span>#}
+{#                        <a href="https://www.facebook.com/login/"#}
+{#                           class="btn btn--social-large btn--block btn--radius btn--size-xlarge btn--color-white btn--bg-dodger-blue"><span#}
+{#                                class="icon"><i class="icon icon-carce-facebook"></i></span>ادامه با فیسبوک</a>#}
+{#                        <a href="https://myaccount.google.com/"#}
+{#                           class="btn btn--social-large btn--block btn--radius btn--size-xlarge btn--color-white btn--bg-red-orange"><span#}
+{#                                class="icon"><i class="icon icon-carce-google"></i></span>ادامه با گوگل</a>#}
+{#                    </form>#}
+{#                          <a href="{% url 'password_reset' %}" class="forgot-link">فراموشی رمز ورود</a>#}
+{#                    <div class="create-account-text text-center">حساب کاربری ندارید؟ <a href="{% url 'register' %}"#}
+{#                                                                                        class="btn--color-radical-red">ثبت#}
+{#                        نام در برنامه</a></div>#}
+{#                    <!-- End User Event Area -->#}
+{#                    <div class="page-progress-wrapper">#}
+{#                        <a href="{% url 'register' %}"#}
+{#                           class="btn--center btn--round btn--size-58-58 btn--color-white btn--radical-red progress-btn progress-btn--50"><i#}
+{#                                class="icon icon-carce-ios-arrow-forward"></i></a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <!-- ...:::End User Event Section:::... -->#}
+{##}
+{#    </main>#}
+{#{% endblock %}#}
+{#</body>#}
+{##}
+{##}
+{#{% block content %}#}
+{#    <form action="#" method="POST">#}
+{#        {% csrf_token %}#}
+{#         {{ form.as_p }}#}
+{#         <button type="submit">login</button>#}
+{#    </form>#}
+{#{% endblock %}#}

@@ -1,0 +1,37 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+               <!-- ...:::Start Cart Section:::... -->
+        <div class="cart-section section-gap-top-30">
+            <div class="container">
+                <div class="cart-items-wrapper">
+                    <ul class="cart-item-list">
+                        <!-- Start Single Cart Item -->
+                        {% for item in cart %}
+                        <li class="single-cart-item">
+                            <div class="image">
+                                <img width="90" height="90" src="{{ item.product_obj.covers.url }}">
+                            </div>
+                            <div class="content">
+                                <a href="" class="title">{{ item.product_obj.name }}</a>
+                                <div class="details">
+                                    <div class="left">
+                                        <span class="price">{{ item.product_obj.selling_price }}</span>
+                                    </div>
+                                    <div class="right">
+                                        {% for  %}
+                                        <p><span class="icon"><i class="icon icon-carce-check-circle"></i></span> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                        <!-- End Single Cart Item -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ...:::End Cart Section:::... -->
+
+{% endblock %}

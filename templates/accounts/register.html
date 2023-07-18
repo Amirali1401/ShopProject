@@ -1,0 +1,59 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+         <main class="main-wrapper">
+
+        <!-- ...:::Start Login Section:::... -->
+        <div class="login-section mt-115">
+            <div class="container">
+                <!-- Start User Event Area -->
+                <div class="login-wrapper">
+                    <div class="section-content">
+                        <h1 class="title">ثبت نام در سایت</h1>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+                    </div>
+                    <form action="#" class="default-form-wrapper" method="POST">
+                        {% csrf_token %}
+                        {% if form.errors %}
+                            {{ form.errors }}
+                        {% endif %}
+                        <ul class="default-form-list">
+                            <li class="single-form-item">
+                                <label for="name" class="visually-hidden">نام کاربری</label>
+                                <input name ='username'  type="text" id="name" placeholder="نام کاربری" >
+                                <span class="icon"><i class="icon icon-carce-user"></i></span>
+                            </li>
+                            <li class="single-form-item">
+                                <label for="email" class="visually-hidden">ایمیل</label>
+                                <input name = 'email' type="email" id="email" placeholder="ایمیل" >
+                                <span class="icon"><i class="icon icon-carce-mail"></i></span>
+                            </li>
+                            <li class="single-form-item">
+                                <label for="password" class="visually-hidden">رمز ورود</label>
+                                <input name="password1" type="password" id="password" placeholder="رمز ورود" >
+                                <span class="icon"><i class="icon icon-carce-eye"></i></span>
+                            </li>
+                            <li class="single-form-item">
+                                <label for="con-password" class="visually-hidden">تکرار رمز ورود</label>
+                                <input name ="password2" type="password" id="con-password" placeholder="تکرار رمز ورود" >
+                                <span class="icon"><i class="icon icon-carce-eye"></i></span>
+                            </li>
+                        </ul>
+                        <button type="submit">ثبت نام در سایت</button>
+                    </form>
+                </div>
+
+                <div class="sign-account-text text-center">قبلاً ثبت نام کرده اید ؟ <a href="{% url 'login' %}" class="btn--color-radical-red">وارد سایت شوید</a></div>
+                <!-- End User Event Area -->
+                <div class="page-progress-wrapper">
+                    <a href="{% url 'product:index' %}" class="btn--center btn--round btn--size-58-58 btn--color-white btn--radical-red progress-btn progress-btn--100"><i
+                            class="icon icon-carce-ios-arrow-forward"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- ...:::End User Event Section:::... -->
+
+    </main>
+
+{% endblock %}

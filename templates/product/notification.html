@@ -1,0 +1,28 @@
+{% extends '_base.html' %}
+
+{% block content %}
+    <!-- ...:::Start Catagories - 1 Section:::... -->
+    <div class="catagories-section section-gap-top-50">
+        <div class="container">
+
+            <div class="product-wrapper">
+                <div class="product-wrapper-content--4"><!-- Start Product Single Item -->
+                    <!-- Start Product Single Item -->
+                    {% for notification in notifications %}
+                    <div class="single-product-item product-item--style-4">
+                        <div class="content">
+                            <div class="content--left">
+                                <a href="single-product.html" class="title">شماره : {{ notification.id }}</a>
+                                <p>{{ notification.text }}.</p>
+                            </div>
+                        </div>
+                        <a href="#?" aria-label="Cart" class="cart-link"><i
+                                class="icon icon-carce-x-circle"></i></a>
+                    </div>
+                    {% endfor %}
+                    <!-- ENd Product Single Item -->
+            </div>
+        </div>
+    </div>
+    <!-- ...:::Start Catagories - 1 Section:::... -->
+{% endblock %}

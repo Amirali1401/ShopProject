@@ -1,0 +1,73 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+    <main class="main-wrapper">
+        <!-- ...:::Start Product Single Section:::... -->
+        <div class="product-single-section section-gap-top-30">
+            <div class="container">
+                <div class="product-gallery">
+                    <div class="product-gallery-large">
+                        <!-- Slider main container -->
+                        <div class="swiper">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <div class="product-gallery-single-item">
+                                        <div class="image">
+                                            <img class="img-fluid" width="276" height="172"
+                                                 src="{{ products.covers.url }}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="container px-0">
+                <div class="product-gallery-details">
+                    <h1 class="title">{{ products.product.name }}</h1>
+                    <p class="text">{{ products.product.description | truncatewords:5 }}</p>
+                    <form action="{% url 'cart:add_to_cart' products.id %}" method="POST">
+                        {% csrf_token %}
+                        <ul class="product-variable-lists">
+                            <li class="list-item">
+                                <div class="left">تعداد</div>
+                                <div class="right">
+                                    <div class="product-quantity">
+                                        <div class="num-block skin-2">
+                                            <div class="num-in">
+                                                <span class="minus dis"></span>
+                                                <label for="quan-1" class="visually-hidden"></label>
+                                                <input name='quantity' id="quan-1" type="text" class="in-num" value="1"
+                                                       readonly="">
+                                                <span class="plus"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <button type="submit" class="btn-payment">اضافه کردن به سبد خرید</button>
+                        </ul>
+                        <br>
+                        {% for comment in comments %}
+                            {{ comment.text|truncatewords:7 }}
+                        {% endfor %}
+                    </form>
+                  <form action="{% url 'product:create_comment'  %}" method="POST">
+                      {% csrf_token %}
+                      {{ comment_form.as_p }}
+                      <button type="submit">ثبت نظر برای این محصول</button>
+                  </form>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+{% endblock %}

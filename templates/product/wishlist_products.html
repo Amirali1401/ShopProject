@@ -1,0 +1,39 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+        <!-- ...:::Start Cart Section:::... -->
+        <div class="cart-section section-gap-top-30">
+            <div class="container">
+                <div class="cart-items-wrapper">
+                    <ul class="cart-item-list">
+                        <!-- Start Single Cart Item -->
+                        {% for product in wishlist_products %}
+                        <li class="single-cart-item">
+                            <div class="image">
+                                <img width="90" height="90" src="{{ product.product.covers.url }}" alt="">
+                            </div>
+                            <div class="content">
+                                <a href="{% url 'product:detail_products' product.product.id %}" class="title">{{ product.product.name }}</a>
+                                <div class="details">
+                                    <div class="left">
+                                        <span class="price">تومان  {{ product.product.selling_price }} </span>
+                                    </div>
+                                    <div class="right">
+                                        <a href="cart.html" class="btn btn--default btn--radius btn--color-white btn--radical-red">افزودن به سبد خرید</a>
+                                    </div>
+                                </div>
+                                <div class="left">
+                                    <a href="{% url 'product:delete_from_wishlist' product.product.id %}" class="btn btn--default btn--radius btn--color-white btn--radical-red">حذف از لیست علاقه مندی ها</a>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- End Single Cart Item -->
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ...:::End Cart Section:::... -->
+
+{% endblock %}
